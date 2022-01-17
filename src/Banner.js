@@ -1,6 +1,6 @@
 import slideInfo from './slideInfo.js';
 import {GrPrevious, GrNext} from "react-icons/gr";
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 
 export default function Banner() {
@@ -41,8 +41,8 @@ export default function Banner() {
         })
         setTimeout(()=>{
             target.style.transform = "translateX(0px)";
-            target.append(slides[0]);
             slides[2].classList.add("active");
+            target.append(slides[0]);
             isActive = false;
             timer = setInterval(()=>{
                 moveRight();
@@ -95,8 +95,8 @@ export default function Banner() {
     }
 
     return(
-        <div className="slide__frame">
-            <div className="slide__wrapper" onDrag={onDrag} onDragStart={onDragStart} onDragEnd={onDragEnd}>
+        <div className="slide__frame" onDragStart={onDragStart} onDrag={onDrag} onDragEnd={onDragEnd}>
+            <div className="slide__wrapper">
                 {
                     slideInfo.map((data, index) => {
                         return (
