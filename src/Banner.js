@@ -1,30 +1,14 @@
 import slideInfo from './slideInfo.js';
 import {GrPrevious, GrNext} from "react-icons/gr";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 
 export default function Banner() {
     let width = 0;
-    let isActive = false;
     let dragStart = 0;
     let dragEnd = 0;
+    let isActive = false;
     let timer;
-
-    useEffect(() => {
-        const slideWrapper = document.querySelector(".slide__wrapper");
-        const slides = slideWrapper.querySelectorAll(".slide");
-    
-        width = document.querySelector(".slide__frame").getBoundingClientRect().width;
-        slideWrapper.prepend(slides[slides.length - 1]);
-        slides[0].classList.add("active")
-        timer = setInterval(()=>{
-            moveRight();
-        }, 3500)
-    }, [])
-    
-    window.addEventListener("resize", () =>{
-        width = document.querySelector(".slide__frame").getBoundingClientRect().width;
-    })
 
     const moveRight = () => {
         if(isActive) return;
@@ -94,6 +78,25 @@ export default function Banner() {
         (result > 0) ? moveRight() : moveLeft();
     }
 
+    useEffect(() => {
+        const slideWrapper = document.querySelector(".slide__wrapper");
+        const slides = slideWrapper.querySelectorAll(".slide");
+    
+        setSlideWidth();
+        slideWrapper.prepend(slides[slides.length - 1]);
+        slides[0].classList.add("active")
+        timer = setInterval(()=>{
+            moveRight();
+        }, 3500)
+    }, []);
+
+    window.addEventListener("resize", setSlideWidth)
+
+    function setSlideWidth(){
+        const slideWidth = document.querySelector(".slide__frame").getBoundingClientRect().width;
+        width = slideWidth;
+    }
+
     return(
         <div className="slide__frame" onDragStart={onDragStart} onDrag={onDrag} onDragEnd={onDragEnd}>
             <div className="slide__wrapper">
@@ -108,7 +111,7 @@ export default function Banner() {
                                     <div className='title'>{data.title}</div>
                                     <div className='desc'>{data.description}</div>
                                     <div className='rowLine' />
-                                    <a href="/" className='linkButton'>바로가기<GrNext /></a>
+                                    <a href="*" className='linkButton'>바로가기<GrNext /></a>
                                 </div>
                             </div>
                         )
