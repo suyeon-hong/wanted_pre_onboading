@@ -1,0 +1,247 @@
+header{
+    border-bottom: 1px solid rgba(0,0,0,0.13);
+
+    .inner{
+        width: 1060px;
+        margin: 0 auto;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .menu_logo{
+            display: flex;
+            align-items: center;
+
+            .logo a{
+                font: 21px/1 'Be Vietnam Pro';
+                color: #333;
+                letter-spacing: -1px;
+                vertical-align: super;
+                display: inline-block;
+                margin-top: 11px;
+                margin-left: 12px;
+            }
+        }
+
+        .gnb{
+            display: flex;
+            justify-content: space-evenly;
+            flex: 1 1;
+
+            li{
+                a{
+                    font-size: 14px;
+                    font-weight: bold;
+                    color: #333;
+                    display: block;
+                    padding: 0px 15px;
+                    position: relative;
+    
+                    span{
+                        position: absolute;
+                        top: -5px;
+                        right: -4px;
+                    }
+                }
+                &.mobile{
+                    display: none;
+
+                    a{
+                        padding-left: 20px;
+                    }
+                }
+            } 
+        }
+
+        .util{
+            display: flex;
+
+            li{
+                .searchButton, .notiButton{
+                    color: #333;
+                    padding: 0 10px;
+                    margin-top: 5px;
+                }
+                .menudots{
+                    padding: 0 5px;
+                    margin-top: 5px;
+                }
+                .notiButton, .profileButton{
+                    position: relative;
+
+                    span{
+                        display: block;
+                        padding: 0 4px;
+                        border-radius: 6px;
+                        background: #36f;
+                        font-size: 10px;
+                        font-weight: 700;
+                        line-height: 16px;
+                        color: #fff;
+                        text-align: center;
+                        position: absolute;
+                    }
+                }
+                .notiButton{
+                    margin-right: 10px;
+
+                    span{top: -5px;right: -2px;}
+                }
+                .profileButton{
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    padding: 1px;
+                    border: 1px solid rgba(0,0,0,0.13);
+
+                    .avatarImage{
+                        width: 100%;
+                        height: 100%;
+                        border-radius: inherit;
+                        background-size: contain;
+                    }
+                    span{top: -1px;right: -6px;}
+                }
+                .circle{
+                    font-size: 13px;
+                    line-height: 30px;
+                    color: #666;
+                    padding: 5px 10px;
+                    border-radius: 15px;
+                    border: 1px solid rgba(0,0,0,0.13);
+                }
+                &.leftLine::before{
+                    content: '';
+                    display: inline-block;
+                    width: 1px;
+                    height: 10px;
+                    background: rgba(0,0,0,0.13);
+                    margin: auto 20px;
+                }
+                &.mobile{
+                    display: none;
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: $web1) {
+    header{
+        .inner{
+            width: 90%;
+
+            .util{
+                li{
+                    .searchButton, .notiButton{
+                        padding: 0 5px;
+                    }
+                    .notiButton{
+                        margin-right: 5px;
+                    }
+                    &.leftLine::before{
+                        margin: auto 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $web2) {
+    header{
+        .inner{
+            .gnb{
+                li a{
+                    font-size: 13px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $tablet1) {
+    header{
+        .inner{
+            flex-wrap: wrap;
+
+            .menu_logo{
+                width: 100%;
+            }
+            .gnb{
+                justify-content: flex-start;
+
+                li a{
+                    padding: 11px 10px 19px;
+
+                    span{
+                        top: 5px;
+                        right: -6px;
+                    }
+                }
+            }
+            .util{
+                li{
+                    margin-bottom: 10px;
+
+                    .notiButton{
+                        margin-right: 0;
+                    }
+                    &.web{
+                        display: none;
+                    }
+                    &.mobile{
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $tablet2) {
+    header{
+        .inner{
+            width: 100%;
+
+            .menu_logo{
+                padding: 5px 20px;
+            }
+            .gnb{
+                li{
+                    &.mobile{
+                        display: inline-block;
+                    }
+                    &:nth-of-type(n+4){
+                        display: none;
+                    }
+                    &.on::after{
+                        content: '';
+                        display: block;
+                        width: 100%;
+                        height: 2px;
+                        background: #0048EB;
+                    }
+                    a{
+                        font-size: 14px;
+                    }
+                }
+            }
+            .util{
+                right: 20px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $mobile) {
+    header{
+        .inner .gnb li a{
+            font-size: 13px;
+            padding: 15px 8px;
+        }
+    }
+}

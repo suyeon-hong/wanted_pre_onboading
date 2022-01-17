@@ -1,0 +1,155 @@
+.slide__frame{
+    width: 1084px;
+    margin: 0 auto;
+    position: relative;
+
+    .slide__wrapper{
+        width: calc(100% * 11);
+        display: flex;
+        justify-content: space-evenly;
+        margin-left: -100%;
+
+        .slide{
+            width: calc(100% / 11);
+            height: 300px;
+            margin: 0 12px;
+            position: relative;
+
+            &.active{
+                cursor: grab;
+
+                .imgBox img{opacity: 1;}
+                .infoBox{
+                    opacity: 1;
+                    transition: opacity 0.5s;
+                }
+            }
+            .imgBox{
+                width: 100%;
+                height: 100%;
+                border-radius: 5px;
+                overflow: hidden;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: #000;
+
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    opacity: 0.7;
+                }
+            }
+            .infoBox{
+                width: 330px;
+                height: 146px;
+                background: #fff;
+                border-radius: 4px;
+                position: absolute;
+                bottom: 28px;
+                left: 34px;
+                opacity: 0;
+
+                .title{
+                    margin: 20px 20px 0px;
+                    font-size: 20px;
+                    font-weight: 700;
+                    line-height: 1.5;
+                    color: #333;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
+                .desc{
+                    margin: 0 20px;
+                    font-size: 14px;
+                    font-weight: 500;
+                    line-height: 1.64;
+                    color: #333;
+                    height: 44px;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
+                .rowLine{
+                    height: 1px;
+                    background-color: #ececec;
+                    border: none;
+                }
+                .linkButton{
+                    display: block;
+                    margin: 6px 0 0 13px;
+                    padding: 6px 8px;
+                    font-size: 14px;
+                    font-weight: 700;
+                    color: #36f;
+                }
+            }
+        }
+    }
+    .slideButton{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 30px;
+        height: 60px;
+        border-radius: 15px;
+        font-size: 16px;
+        background-color: #fff;
+        opacity: .5;
+
+        &.left{
+            left: calc((100% - 1200px) / 2);
+        }
+        &.right{
+            right: calc((100% - 1200px) / 2);
+        }
+    }
+}
+
+@media screen and(max-width: $web1) {
+    .slide__frame{
+        width: 100%;
+        padding: 0 40px;
+
+        .slide__wrapper{
+            .slide{
+                height: auto;
+                margin: 0 10px;
+
+                .imgBox{
+                    position: relative;
+                    height: 183px;
+                
+                }
+                .infoBox{
+                    position: relative;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    text-align: center;
+                    opacity: 1;
+
+                    .title{
+                        margin: 20px 0 0;
+                        font-size: 18px;
+                        line-height: 1;
+                    }
+                    .desc{
+                        font-size: 13px;
+                        margin: 6px 0 0;
+                        line-height: 1.15;
+                        height: auto;
+                    }
+                    .rowLine{display: none;}
+                    .linkButton{
+                        font-size: 14px;
+                        line-height: 1;
+                    }
+                }
+            }
+        }
+        .slideButton{display: none;}
+    }
+}
